@@ -1,4 +1,4 @@
-name: Deploy Site and Run Telegram Bot
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -6,27 +6,15 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
-      - name: Install dependencies
-
-
-      - name: Run Telegram Bot
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-
+        uses: actions/checkout@v4
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.5
+        uses: JamesIves/github-pages-deploy-action@v4.6.8
         with:
-          branch: main
-          folder: . 
+          branch: gh-pages
+          folder: . # فایل‌ها توی ریشه هستن
+            
